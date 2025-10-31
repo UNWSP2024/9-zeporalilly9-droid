@@ -8,11 +8,34 @@
 # It should handle any IOError exceptions that are raised.
 # It should handle any ValueError exceptions that are raised when the items that are read from the file 
 # are converted to a number.
+
+# Program #3: Average Numbers
+# Author: Zepora Lilly
+# Date: 10/31/2025
 def sum_numbers_from_file():
     ######################
     # Add your code here #
     ######################
     print('In the sum_numbers_from_file function')
+    try:
+        with open("numbers.txt", "r") as file:
+            total = 0
+            count = 0
+            for line in file:
+                try:
+                    number = int(line.strip())
+                    total += number
+                    count += 1
+                except ValueError:
+                    print(f"Skipping invalid line: {line.strip()}")
+            print("In the sum_numbers_from_file function")
+            print("Total:", total)
+            if count > 0:
+                print("Average:", total / count)
+            else:
+                print("No valid numbers found.")
+    except IOError:
+        print("Error: 'numbers.txt' could not be opened.")
 
 # You don't need to change anything below this line:
 if __name__ == '__main__':
